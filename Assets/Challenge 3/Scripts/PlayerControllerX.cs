@@ -25,6 +25,7 @@ public class PlayerControllerX : MonoBehaviour
         playerAudio = GetComponent<AudioSource>();
         playerRb = GetComponent<Rigidbody>();
 
+
         // Apply a small upward force at the start of the game
         playerRb.AddForce(Vector3.up * 5, ForceMode.Impulse);
 
@@ -55,6 +56,7 @@ public class PlayerControllerX : MonoBehaviour
         // if player collides with money, fireworks
         else if (other.gameObject.CompareTag("Money"))
         {
+            fireworksParticle.transform.position = transform.position;
             fireworksParticle.Play();
             playerAudio.PlayOneShot(moneySound, 1.0f);
             Destroy(other.gameObject);
